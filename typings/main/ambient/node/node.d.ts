@@ -197,6 +197,11 @@ declare namespace NodeJS {
         listenerCount(type: string): number;
     }
 
+
+    export interface StdinStream extends ReadableStream {
+        setRawMode(mode: boolean): void;
+    }
+
     export interface ReadableStream extends EventEmitter {
         readable: boolean;
         read(size?: number): string|Buffer;
@@ -248,7 +253,7 @@ declare namespace NodeJS {
     export interface Process extends EventEmitter {
         stdout: WritableStream;
         stderr: WritableStream;
-        stdin: ReadableStream;
+        stdin: StdinStream;
         argv: string[];
         execArgv: string[];
         execPath: string;
