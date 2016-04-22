@@ -30,12 +30,7 @@ var Stopwatch = (function () {
         this.saveFile = function () {
             var now = new Date();
             var filename = now.toLocaleDateString() + " " + now.toLocaleTimeString() + ".json";
-            fs.writeFile(filename, JSON.stringify({ laps: _this.laps }), function (err) {
-                if (err)
-                    console.log('Couldn\'t save lap data.');
-                else
-                    console.log("Saved lap data to " + filename);
-            });
+            fs.writeFile(filename, JSON.stringify({ laps: _this.laps }));
         };
         this.draw = function () {
             process.stdout.write('\033c');
